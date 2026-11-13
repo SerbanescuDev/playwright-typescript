@@ -1,5 +1,7 @@
 # SauceDemo UI Automation with Playwright
 
+[![Playwright Tests](https://github.com/SerbanescuDev/playwright-typescript/actions/workflows/playwright.yml/badge.svg)](https://github.com/SerbanescuDev/playwright-typescript/actions/workflows/playwright.yml)
+
 ![Playwright](https://img.shields.io/badge/Playwright-2EAD33?style=for-the-badge&logo=playwright&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
 ![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
@@ -14,6 +16,8 @@ The project is built with **Playwright** and **TypeScript** and follows the **Pa
 
 ```
 playwright-typescript/
+├── .github/workflows/
+│   └── playwright.yml      # CI pipeline
 ├── pages/                  # Page Object classes
 │   ├── LoginPage.ts
 │   ├── InventoryPage.ts
@@ -117,10 +121,22 @@ Running 10 tests using 9 workers
 
 When a test fails, Playwright saves a screenshot and a trace, which can be opened from the HTML report to see exactly what happened step by step.
 
+## Continuous integration
+
+The tests run on GitHub Actions on every push and pull request to `main`. The workflow can also be started manually from the **Actions** tab.
+
+Steps in the pipeline:
+
+1. Install Node.js and the project dependencies
+2. Install the Chromium browser
+3. Run all the tests
+4. Upload the HTML report as an artifact (available for 14 days on the run page)
+
+The workflow file is in [`.github/workflows/playwright.yml`](.github/workflows/playwright.yml).
+
 ## Possible improvements
 
 - Run the tests on Firefox and WebKit as well
-- Add a GitHub Actions workflow to run the tests on every push
 - Use Playwright fixtures to create the page objects
 - Save the login state so tests don't log in through the UI every time
 - Add tests for the other SauceDemo users (`problem_user`, `performance_glitch_user`)
