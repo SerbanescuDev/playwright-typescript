@@ -70,7 +70,7 @@ If a selector changes on the website, it only needs to be updated in one page cl
 
 ### Prerequisites
 
-- [Node.js](https://nodejs.org/) 20 or newer
+- [Node.js](https://nodejs.org/) 20 or newer (latest LTS recommended)
 - npm
 
 ### Installation
