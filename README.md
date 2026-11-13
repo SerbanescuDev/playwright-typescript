@@ -9,12 +9,6 @@ The tests cover the main user flows of the shop: login, browsing products, manag
 
 The project is built with **Playwright** and **TypeScript** and follows the **Page Object Model** pattern, so the tests stay short and readable and the locators live in one place.
 
-## Tech stack
-
-- **Playwright Test** - test runner, assertions and browser automation
-- **TypeScript** - type safety and better editor support
-- **Page Object Model** - one class per page of the application
-- **HTML Reporter** - test report with screenshots and traces for failed tests
 
 ## Project structure
 
