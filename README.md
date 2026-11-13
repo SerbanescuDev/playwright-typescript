@@ -51,7 +51,7 @@ playwright-typescript/
 | 9 | Checkout | User can complete an order | End-to-end |
 | 10 | Checkout | Error is shown when first name is missing | Negative |
 
-The manual test cases (steps, test data and expected results) for these scenarios are in [docs/test-cases.md](docs/test-cases.md).
+The manual test cases (steps, test data and expected results) for these scenarios, plus 5 more that are not automated yet, are in [docs/test-cases.md](docs/test-cases.md).
 
 ## How the Page Object Model is used
 
