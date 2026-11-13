@@ -4,7 +4,8 @@ export default defineConfig({
   testDir: './tests',
   fullyParallel: true,
   retries: process.env.CI ? 1 : 0,
-  reporter: 'html',
+  // On CI each suite creates a blob report, they are merged into one HTML report at the end
+  reporter: process.env.CI ? 'blob' : 'html',
 
   use: {
     baseURL: 'https://www.saucedemo.com',

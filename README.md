@@ -94,6 +94,9 @@ npm run test:headed
 # Run a single test file
 npx playwright test tests/login.spec.ts
 
+# Check TypeScript types
+npm run typecheck
+
 # Open the HTML report after a run
 npm run report
 ```
@@ -125,12 +128,18 @@ When a test fails, Playwright saves a screenshot and a trace, which can be opene
 
 The tests run on GitHub Actions on every push and pull request to `main`. The workflow can also be started manually from the **Actions** tab.
 
-Steps in the pipeline:
+The pipeline has three stages:
 
-1. Install Node.js and the project dependencies
-2. Install the Chromium browser
-3. Run all the tests
-4. Upload the HTML report as an artifact (available for 14 days on the run page)
+```
+Type check  ──►  login tests      ──►  Merge test reports
+                 inventory tests
+                 cart tests
+                 checkout tests
+```
+
+1. **Type check** - runs `tsc` to make sure there are no TypeScript errors
+2. **Tests** - each test file runs in its own job, all four in parallel
+3. **Merge test reports** - the results from all jobs are combined into one HTML report, which can be downloaded from the run page (kept for 14 days)
 
 The workflow file is in [`.github/workflows/playwright.yml`](.github/workflows/playwright.yml).
 
