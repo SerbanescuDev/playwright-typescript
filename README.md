@@ -30,6 +30,8 @@ playwright-typescript/
 │   └── checkout.spec.ts
 ├── utils/
 │   └── testData.ts         # Users and checkout data
+├── docs/
+│   └── test-cases.md       # Manual test cases
 ├── playwright.config.ts    # Base URL, browser, reporter, screenshots, traces
 └── package.json
 ```
@@ -48,6 +50,8 @@ playwright-typescript/
 | 8 | Cart | Product can be removed from the cart | Positive |
 | 9 | Checkout | User can complete an order | End-to-end |
 | 10 | Checkout | Error is shown when first name is missing | Negative |
+
+The manual test cases (steps, test data and expected results) for these scenarios are in [docs/test-cases.md](docs/test-cases.md).
 
 ## How the Page Object Model is used
 
