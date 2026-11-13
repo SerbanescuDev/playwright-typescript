@@ -131,21 +131,24 @@ The tests run on GitHub Actions on every push and pull request to `main`. The wo
 The pipeline has three stages:
 
 ```
-Type check  ──►  login tests      ──►  Merge test reports
-                 inventory tests
-                 cart tests
-                 checkout tests
+Type Check  ──►  Login Tests      ──►  Test Report
+                 Inventory Tests
+                 Cart Tests
+                 Checkout Tests
 ```
 
-1. **Type check** - runs `tsc` to make sure there are no TypeScript errors
+1. **Type Check** - runs `tsc` to make sure there are no TypeScript errors
 2. **Tests** - each test file runs in its own job, all four in parallel
-3. **Merge test reports** - the results from all jobs are combined into one HTML report, which can be downloaded from the run page (kept for 14 days)
+3. **Test Report** - the results from all jobs are combined into one HTML report, which can be downloaded from the run page (kept for 14 days)
 
 The workflow file is in [`.github/workflows/playwright.yml`](.github/workflows/playwright.yml).
 
-## Possible improvements
+## Roadmap
 
-- Run the tests on Firefox and WebKit as well
-- Use Playwright fixtures to create the page objects
-- Save the login state so tests don't log in through the UI every time
-- Add tests for the other SauceDemo users (`problem_user`, `performance_glitch_user`)
+Planned improvements are tracked as [GitHub issues](https://github.com/SerbanescuDev/playwright-typescript/issues) and on the [project board](https://github.com/users/SerbanescuDev/projects/1).
+
+- [ ] [#1](https://github.com/SerbanescuDev/playwright-typescript/issues/1) Use Playwright fixtures to create the page objects
+- [ ] [#2](https://github.com/SerbanescuDev/playwright-typescript/issues/2) Add a login fixture for tests that need a logged in user
+- [ ] [#3](https://github.com/SerbanescuDev/playwright-typescript/issues/3) Reuse the login session with `storageState`
+- [ ] [#4](https://github.com/SerbanescuDev/playwright-typescript/issues/4) Run the tests on Firefox and WebKit
+- [ ] [#5](https://github.com/SerbanescuDev/playwright-typescript/issues/5) Add tests for the other SauceDemo users

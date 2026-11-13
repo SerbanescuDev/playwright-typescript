@@ -10,7 +10,7 @@ on:
 
 jobs:
   typecheck:
-    name: Type check
+    name: Type Check
     runs-on: ubuntu-26.04
     timeout-minutes: 10
 
@@ -30,8 +30,8 @@ jobs:
       - name: Check TypeScript types
         run: npm run typecheck
 
-  test:
-    name: ${{ matrix.suite }} tests
+  tests:
+    name: ${{ matrix.name }} Tests
     needs: typecheck
     runs-on: ubuntu-26.04
     timeout-minutes: 15
@@ -40,7 +40,15 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        suite: [login, inventory, cart, checkout]
+        include:
+          - suite: login
+            name: Login
+          - suite: inventory
+            name: Inventory
+          - suite: cart
+            name: Cart
+          - suite: checkout
+            name: Checkout
 
     steps:
       - name: Checkout code
@@ -58,7 +66,7 @@ jobs:
       - name: Install Playwright browser
         run: npx playwright install --with-deps chromium
 
-      - name: Run ${{ matrix.suite }} tests
+      - name: Run ${{ matrix.name }} tests
         run: npx playwright test tests/${{ matrix.suite }}.spec.ts
         env:
           PLAYWRIGHT_BLOB_OUTPUT_NAME: report-${{ matrix.suite }}.zip
@@ -72,8 +80,8 @@ jobs:
           retention-days: 1
 
   report:
-    name: Merge test reports
-    needs: test
+    name: Test Report
+    needs: tests
     if: ${{ !cancelled() }}
     runs-on: ubuntu-26.04
     timeout-minutes: 10
